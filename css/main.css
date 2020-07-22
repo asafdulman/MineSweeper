@@ -1,0 +1,18 @@
+body {
+    text-align: center;
+}
+
+.cell {
+    height: 50px;
+    width: 50px;
+    background-color: tomato;
+    
+}
+
+.table {
+    margin: auto;
+}
+
+.neg {
+    background-color: salmon;
+}
