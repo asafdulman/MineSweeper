@@ -5,28 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mine Sweeper</title>
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,600&display=swap" rel="stylesheet">
 </head>
 <body onload="init()">
 
-    <h1>Mine Sweeper</h1>
+    <div class="heading">
+        <h1>Mine Sweeper</h1>
+        <p>Find the mines, mark with a right click, and clear the rest of the board.</p>
+        
+        <div onclick="init()" class="mood-container"></div>
+        <div class="timer-div"></div>
+    </div>
+    
 
     <div class="main">
-        <div onclick="init()" class="mood-container"></div>
-
-        <div class="timer-div"></div>
-        <div class="levels">
-            <button class="level-button" onclick="setLevel(this)">Beginner</button>
-            <button class="level-button" onclick="setLevel(this)">Medium</button>
-            <button class="level-button" onclick="setLevel(this)">Expert</button>
+        <div class="left-container">
+            <div class="hints"></div>
+            <button onclick="safeClick(this)" class="button safe1">Safe Click</button>
+            <button onclick="safeClick(this)" class="button safe2">Safe Click</button>
+            <button onclick="safeClick(this)" class="button safe3">Safe Click</button>
+            <div class="lives"></div>
         </div>
+        
+        
+        <div class="table-container"></div>
+        
+            
+            <div class="levels">
+                <button class="button level-button-1" value="Beginner" onclick="setLevel(this)">Beginner</button>
+                <button class="button level-button-2" value="Medium" onclick="setLevel(this)">Medium</button>
+                <button class="button level-button-3" value="Expert" onclick="setLevel(this)">Expert</button>
+            </div>
     </div>
+        
 
   
 
     
-    <div class="table-container">
-
-    </div>
+    
 
     
     <script src="js/main.js"></script>
