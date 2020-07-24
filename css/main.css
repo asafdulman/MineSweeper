@@ -112,9 +112,15 @@ p {
 
 .lives {
     height: 50px;
-    width: 250px;
-    margin: 0 auto;
+    width: 180px;
+    margin: 10px auto;
     font-size: 30px;
+    border-radius: 15px;
+    color: white;
+    background-color: salmon;
+
+
+
 
 }
 

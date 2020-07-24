@@ -113,7 +113,7 @@ function cellClicked(cell, i, j) {
     if (!gGame.isOn) return
     if (gBoard[i][j].isMarked) return;
 
-    if (gGame.shownCount === 0) {
+    if (gGame.shownCount === 0 && !gIsHint) {
         setMinesOnBoard(gBoard, i, j)
         countMines()
         startTime()
@@ -122,7 +122,7 @@ function cellClicked(cell, i, j) {
     if (gIsHint) {
         revealNegs(i, j)
         setTimeout(function () {
-            unRevealNegs(i, j)
+            hideNegs(i, j)
 
         }, 1000)
         return;
@@ -132,14 +132,14 @@ function cellClicked(cell, i, j) {
     if (!gBoard[i][j].isShown) {
         gBoard[i][j].isShown = true;
         gGame.shownCount++
-        if (gBoard[i][j].isMine === true && gLives === 1) {
+        if (gBoard[i][j].isMine && gLives === 1) { 
             showMines()
             elCell.style.backgroundColor = 'red'
             var elLives = document.querySelector('.lives')
             elLives.innerHTML = `BOOM!`
             gGame.isOn = false
 
-        } else if (gBoard[i][j].isMine === true && gLives > 1) {
+        } else if (gBoard[i][j].isMine && gLives > 1) {
             gLives--
             renderLives(gLives)
             gGame.shownCount--
@@ -149,7 +149,7 @@ function cellClicked(cell, i, j) {
             setTimeout(function () {
                 elCell.style.backgroundColor = 'tomato'
                 elCell.innerHTML = ''
-            }, 300)
+            }, 400)
         } else if (gBoard[i][j].minesAroundCount > 0) {
             elCell.innerHTML = gBoard[i][j].minesAroundCount
             elCell.style.backgroundColor = 'red'
@@ -170,11 +170,11 @@ function revealNegs(positionI, positionJ) {
         if (i < 0 || i >= gBoard.length) continue;
         for (var j = positionJ - 1; j <= positionJ + 1; j++) {
             if (j < 0 || j >= gBoard[i].length || i === positionI && j === positionJ) continue;
-            if (gBoard[i][j].isShown === true) continue;
-            if (gBoard[i][j].isMarked === true) continue;
+            if (gBoard[i][j].isShown) continue;
+            if (gBoard[i][j].isMarked) continue;
 
             var elCell = document.querySelector(`.cell-${i}-${j}`)
-            if (gBoard[i][j].isMine === true) {
+            if (gBoard[i][j].isMine) {
                 elCell.innerHTML = MINE
                 elCell.style.backgroundColor = 'red'
             } else if (gBoard[i][j].minesAroundCount > 0) {
@@ -187,13 +187,13 @@ function revealNegs(positionI, positionJ) {
     }
 }
 
-function unRevealNegs(positionI, positionJ) {
+function hideNegs(positionI, positionJ) {
     for (var i = positionI - 1; i <= positionI + 1; i++) {
         if (i < 0 || i >= gBoard.length) continue;
         for (var j = positionJ - 1; j <= positionJ + 1; j++) {
             if (j < 0 || j >= gBoard[i].length || i === positionI && j === positionJ) continue;
-            if (gBoard[i][j].isShown === true) continue;
-            if (gBoard[i][j].isMarked === true) continue;
+            if (gBoard[i][j].isShown) continue;
+            if (gBoard[i][j].isMarked) continue;
             var elCell = document.querySelector(`.cell-${i}-${j}`)
             elCell.innerHTML = ''
             elCell.style.backgroundColor = 'tomato'
@@ -255,7 +255,7 @@ function setMinesNegsCount(positionI, positionJ) {
         for (var j = positionJ - 1; j <= positionJ + 1; j++) {
             if (j < 0 || j >= gBoard[i].length || i === positionI && j === positionJ) continue;
             var currItem = gBoard[i][j];
-            if (currItem.isMine === true) count++;
+            if (currItem.isMine) count++;
         }
     }
     gBoard[positionI][positionJ].minesAroundCount = count;
@@ -272,7 +272,6 @@ function countMines() {
 }
 
 function showMines() {
-    var elCell = document.querySelector(`.cell-${i}-${j}`)
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard[0].length; j++) {
             var currCell = gBoard[i][j]
