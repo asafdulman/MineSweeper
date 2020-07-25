@@ -5,15 +5,14 @@ var MINE = '💣';
 var WINNER = '😎';
 var PLAYER = '😃';
 var LOSER = '🤬';
-var HINT = '💡'
-var gIsHint = false
+var HINT = '💡';
+var gIsHint = false;
 var elMood = document.querySelector('.mood-container');
 var gBoard;
 var size = 4;
 var gTimer;
 var gLives = 3;
-var gElLivesModal = document.querySelector('.lives-modal')
-var gBestScore = Infinity
+var gElLivesModal = document.querySelector('.lives-modal');
 
 var gGame = {
     isOn: true,
@@ -34,7 +33,6 @@ gBoard = buildBoard(gBoard, gLevel.SIZE);
 function init() {
     gBoard = buildBoard(gBoard, gLevel.SIZE);
     renderBoard(gBoard, '.table-container');
-
     elMood.innerHTML = PLAYER;
     gGame.isOn = true;
     gGame.shownCount = 0;
@@ -43,10 +41,12 @@ function init() {
     gGame.hintsCount = 3;
     gIsHint = false;
     gLives = 3;
+    
     endTime()
     renderTime()
     renderHints()
     renderLives(gLives)
+    renderSafeClick()
 
 }
 
@@ -132,7 +132,7 @@ function cellClicked(cell, i, j) {
     if (!gBoard[i][j].isShown) {
         gBoard[i][j].isShown = true;
         gGame.shownCount++
-        if (gBoard[i][j].isMine && gLives === 1) { 
+        if (gBoard[i][j].isMine && gLives === 1) {
             showMines()
             elCell.style.backgroundColor = 'red'
             var elLives = document.querySelector('.lives')
@@ -291,7 +291,7 @@ function isMineMarked() {
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard[0].length; j++) {
             var currCell = gBoard[i][j]
-            if (currCell.isMine && currCell.isMarked ) {
+            if (currCell.isMine && currCell.isMarked) {
                 count++;
             }
         }
@@ -321,6 +321,17 @@ function activateHint(i) {
         elHint.style.display = 'none'
 
     }, 700)
+}
+
+function renderSafeClick() {
+    var strHTML = ''
+    for (var i = 1; i < 4; i++) {
+        strHTML += `<button onclick="safeClick(this)" class="button safe${i}">Safe Click</button>`
+    }
+
+    var elSafe = document.querySelector('.safe')
+    elSafe.innerHTML = strHTML
+
 }
 
 function safeClick(elBtn) {

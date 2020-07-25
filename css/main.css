@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Exo 2', sans-serif;
     background-image: url('../images/feild1.jpg');
     Background-size: cover;
     background-repeat: no-repeat;
@@ -10,17 +10,6 @@ body {
 
 }
 
-.main {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    flex-wrap: wrap;
-}
-
-
-
 .heading {
     padding-top: 20px;
 }
@@ -28,11 +17,14 @@ body {
 h1 {
     margin-top: 0;
     font-size: 40px;
+    font-weight: 900;
 }
 
 p {
     font-weight: bold;
     font-size: 20px;
+    font-weight: 400;
+
 }
 
 .mood-container {
@@ -54,6 +46,15 @@ p {
     height: auto;
     color: red;
     margin: 0 auto;
+}
+
+.main {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-wrap: wrap;
 }
 
 .left-container {
@@ -92,13 +93,6 @@ p {
     outline: 0;
 }
 
-.best-score {
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-
-
 .hints {
     display: flex;
     justify-content: start;
@@ -108,19 +102,17 @@ p {
     width: 250px;
 }
 
-
-
 .lives {
-    height: 50px;
+    height: 40px;
     width: 180px;
+    font-weight: 400;
     margin: 10px auto;
     font-size: 30px;
     border-radius: 15px;
     color: white;
     background-color: salmon;
-
-
-
+    text-align: center;
+    padding: 6px;
 
 }
 
@@ -161,7 +153,7 @@ p {
     box-shadow: 1px 2px 5px 1px #8a2a21;
     background: linear-gradient(to bottom, #c62d1f 5%, #d6645c 100%);
     background-color: #c62d1f;
-    border-radius: 18px;
+    border-radius: 15px;
     border: 1px solid #d02718;
     display: inline-block;
     cursor: pointer;
@@ -173,6 +165,8 @@ p {
     text-decoration: none;
     text-shadow: -2px -1px 0px #810e05;
     margin: 5px;
+    font-weight: 400;
+
 }
 
 .level-button-1:hover {
@@ -189,7 +183,7 @@ p {
     box-shadow: 1px 2px 5px 1px #8a2a21;
     background: linear-gradient(to bottom, #c62d1f 5%, #d6645c 100%);
     background-color: #c62d1f;
-    border-radius: 18px;
+    border-radius: 15px;
     border: 1px solid #d02718;
     display: inline-block;
     cursor: pointer;
@@ -201,6 +195,8 @@ p {
     text-decoration: none;
     text-shadow: -2px -1px 0px #810e05;
     margin: 5px;
+    font-weight: 400;
+
 }
 
 .level-button-2:hover {
@@ -217,7 +213,7 @@ p {
     box-shadow: 1px 2px 5px 1px #8a2a21;
     background: linear-gradient(to bottom, #c62d1f 5%, #d6645c 100%);
     background-color: #c62d1f;
-    border-radius: 18px;
+    border-radius: 15px;
     border: 1px solid #d02718;
     display: inline-block;
     cursor: pointer;
@@ -229,6 +225,8 @@ p {
     text-decoration: none;
     text-shadow: -2px -1px 0px #810e05;
     margin: 5px;
+    font-weight: 400;
+
 }
 
 .level-button-3:hover {
@@ -239,6 +237,10 @@ p {
 .level-button-3:active {
     position: relative;
     top: 1px;
+}
+
+button {
+    margin: 3px;
 }
 
 .safe1 {
@@ -257,10 +259,8 @@ p {
     text-decoration: none;
     text-shadow: -2px -1px 0px #810e05;
     margin-bottom: 5px;
-}
+    font-weight: 400;
 
-button {
-    margin: 3px;
 }
 
 .safe1:hover {
@@ -288,6 +288,8 @@ button {
     text-decoration: none;
     text-shadow: -2px -1px 0px #810e05;
     margin-bottom: 5px;
+    font-weight: 400;
+
 }
 
 .safe2:hover {
@@ -315,6 +317,8 @@ button {
     text-decoration: none;
     text-shadow: -2px -1px 0px #810e05;
     margin-bottom: 5px;
+    font-weight: 400;
+
 }
 
 .safe3:hover {
