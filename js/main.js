@@ -41,7 +41,7 @@ function init() {
     gGame.hintsCount = 3;
     gIsHint = false;
     gLives = 3;
-    
+
     endTime()
     renderTime()
     renderHints()
@@ -237,16 +237,20 @@ function checkEmptyNegs(positionI, positionJ) {
         for (var j = positionJ - 1; j <= positionJ + 1; j++) {
             if (j < 0 || j >= gBoard[i].length || i === positionI && j === positionJ) continue;
             var currCell = gBoard[i][j];
-            if (!currCell.isMine && !currCell.isMarked && currCell.minesAroundCount === 0 && !currCell.isShown) {
+            if (!currCell.isMine && !currCell.isMarked && !currCell.isShown) {
                 var elCell = document.querySelector(`.cell-${i}-${j}`)
                 elCell.style.backgroundColor = 'red'
+                elCell.innerHTML = (currCell.minesAroundCount > 0) ? currCell.minesAroundCount : ''
                 currCell.isShown = true;
                 gGame.shownCount++
-                checkEmptyNegs(i, j)
-            }
+                if(currCell.minesAroundCount === 0) {
+                    checkEmptyNegs(i, j)
+                }
+            } 
         }
     }
 }
+
 
 function setMinesNegsCount(positionI, positionJ) {
     var count = 0;
